@@ -7,6 +7,7 @@ class Program
     {
         public string Codigo { get; set; }
         public string Nome { get; set; }
+        public string Marca { get; set; }
         public int Quantidade { get; set; }
         public string Tipo { get; set; }
         public double Preco { get; set; }
@@ -16,9 +17,9 @@ class Program
     {
         private List<Produto> produtos = new List<Produto>();
 
-        public void NovoProduto(string codigo, string nome, int quantidade, string tipo, double preco)
+        public void NovoProduto(string codigo, string nome, string marca, int quantidade, string tipo, double preco)
         {
-            Produto produto = new Produto { Codigo = codigo, Nome = nome, Quantidade = quantidade, Tipo = tipo, Preco = preco };
+            Produto produto = new Produto { Codigo = codigo, Nome = nome, Marca = marca, Quantidade = quantidade, Tipo = tipo, Preco = preco };
             produtos.Add(produto);
         }
 
@@ -26,7 +27,7 @@ class Program
         {   
             foreach (var produto in produtos)
              {
-                Console.WriteLine($"====================\nCódigo: {produto.Codigo}\nNome: {produto.Nome}\nQuantidade: {produto.Quantidade}\nTipo: {produto.Tipo}\nPreço: R$ {String.Format("{0:0.00}",produto.Preco)}\n====================\n");
+                Console.WriteLine($"====================\nCódigo: {produto.Codigo}\nNome: {produto.Nome}\nMarca: {produto.Marca}\nQuantidade: {produto.Quantidade}\nTipo: {produto.Tipo}\nPreço: R$ {String.Format("{0:0.00}",produto.Preco)}\n====================\n");
             }
         }
 
@@ -76,13 +77,15 @@ class Program
                     string codigo = Console.ReadLine();
                     Console.WriteLine("Digite o nome do produto: ");
                     string nome = Console.ReadLine();
+                    Console.WriteLine("Digite a marca do produto: ");
+                    string marca = Console.ReadLine();
                     Console.WriteLine("Digite a quantidade em estoque: ");
                     int quantidade = int.Parse(Console.ReadLine());
                     Console.WriteLine("Digite o tipo do produto: ");
                     string tipo = Console.ReadLine();
                     Console.WriteLine("Digite o preço do produto: ");
                     double preco = double.Parse(Console.ReadLine());
-                    estoque.NovoProduto(codigo, nome, quantidade, tipo, preco);
+                    estoque.NovoProduto(codigo, nome, marca, quantidade, tipo, preco);
                     break;
 
                 case "2":
